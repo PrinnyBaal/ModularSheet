@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Higgsy's Modular Sheet</title>
+
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="Styling/sample.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  <script src="src/ctrl/initialize.js"></script>
+  <script src="src/model/sheetStats.js"></script>
+  <script src="src/view/sheetLogic.js"></script>
+
+  <script>
+   window.addEventListener( "load", sheetProj.view.sheetLogic.setupUserInterface);
+  </script>
+</head>
+
+<style>
+</style>
+<body>
+  <div  class="container-fluid pt-2" id="shopBanner">
+    <div class="row  h-75" >
+      <div class="col-1 offset-1" id="bannerImage">
+
+      </div>
+      <div class="col my-auto" id="bannerTitle">
+        Higgsy's Modular Sheet
+      </div>
+    </div>
+    <div class="row h-25">
+      <div class="offset-4 col-3" >
+        <p id="bannerTagline">"Show me watcha got."</p>
+      </div>
+    </div>
+
+  </div>
+
+<div id="alertBanner"></div>
+
+<div id="workBar" style="">
+  <button id="saveButton"  onclick="Data.saveData()" style="margin-top:.5em; margin-bottom:.5em;">SAVE</button>
+
+  <div style="padding: .5em; margin-right: 10%;">
+    <b>Visible Grid:</b>
+    <label class="switch">
+      <input type="checkbox" id="gridToggle" onchange="SheetGrid.toggleGrid()">
+      <span class="slider round"></span>
+    </label>
+
+
+  </div>
+</div>
+<div id="workSpace">
+  <div id="toggleCol">
+
+
+
+    <div class="collapseButton" onclick="pageSelect.toggleColumn()"> <<<< </div>
+    <div id="selectionSection" style=" display: flex; justify-content: flex-end; height:70%; width:100%; ">
+      <div id="creationForm" style="">
+        <div style="display:flex; justify-content: space-between; background-color:white; border-radius:1% 1% 0 0; border:2px solid black;">
+          <select id="typeSelect" onchange="DragPalette.dragSelect(event.target.value)"></select>
+          <button class="imgButton" style="background-size: 100% 100%; height:2.5em; width:2.5em; background-image:url('../images/ui/icon8AddNew.png'); border:none; border-radius:5%;" onclick="DragPalette.createDraggable()"></button>
+        </div>
+        <p style="background-color:white; border:2px solid black; overflow: auto; max-height: 80%; padding:.5em;" id="typeDescription"></p>
+        <label>
+          <span style="color:white">Set Page Background:</span>
+          <input id="pageBackingInput" onchange="pageSelect.changeBacking(event.target.value)">
+        </label>
+
+      </div>
+      <div id="pageSegment" >
+
+        <div id="pageSelector">
+          <div class="pagePreview">
+            <div class="previewPageNum previewPip"></div>
+            <div class="previewPageMove previewPip"></div>
+            <div class="previewPageDelete previewPip" ></div>
+            <div class="previewPageEdit previewPip"></div>
+          </div>
+          <div class="pagePreview"></div>
+          <div class="pagePreview"></div>
+          <div class="pagePreview"></div>
+          <div class="pagePreview"></div>
+          <div class="pagePreview"></div>
+          <div class="pagePreview"></div>
+          <div class="pagePreview"></div>
+          <div class="pagePreview"></div>
+          <div class="pagePreview"></div>
+          <div class="pagePreview"></div>
+          <div class="pagePreview"></div>
+          <div class="pagePreview"></div>
+          <div class="pagePreview"></div>
+          <div class="pagePreview"></div>
+          <button>Add Page</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="drawDisplay">
+      <div id="drawTitle" class="tabHead">Set Stat Relationships</div>
+      <div id="drawBody">
+        <table style="width:100%">
+          <tr>
+            <td colspan=2 align="center"><button  onclick="DrawSys.toggleOverlay()">Toggle Relationship View</button></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+  </div>
+  <div id="sheetCol">
+    <div id="activeSheet" class="charSheet">
+
+      <!-- <div class="testDraggable" style="width:50px; height:50px;">
+        <div class="row">
+          <input class="col-12" style="border:2px solid black; height:20%;">
+        </div>
+
+        <div class="row">
+          <input class="col-6" style="border:2px solid black; height:80%;">
+          <input class="col-6" style="border:2px solid black; height:20%;">
+        </div>
+      </div> -->
+
+      <!-- <div  class="draggable" id="testingDrag" style="width:15%; height:10%; overflow:hidden; position:absolute;">
+        <div style="display:flex; height:20%; width:100%;"><input type="text" style="height:100%; width:100%;"></div>
+        <div style="display:flex; height:80%; width:100%;"><input type="number" style="height:100%; width:100%;"><input type="number" style="height:100%; width:100%;"></div>
+
+
+      </div> -->
+
+      <canvas  id="gridCanvas" style="position:absolute;"></canvas>
+
+      <!-- <div class="container-fluid" id="charChanger">
+        <div class="row" style="height:100%; position:relative;">
+          <input class="col" id="charTitleBanner" onchange="charaSwap.changeTitle(event.target.value)">
+          <select id="charChoiceMenu" onchange="charaSwap.changeChar(event.target.value)">
+          </select>
+
+        </div>
+      </div> -->
+
+
+
+        <!-- <button class ="trayButton" id="reversePageButton" style=""><</button>
+        <button class ="trayButton" id="forwardPageButton" style="">></button> -->
+
+
+    </div>
+
+  </div>
+  <div id="inspectCol">
+    <div class="collapseButton" onclick="InfoBar.toggleInfoBar()">>>>>>>>></div>
+    <!-- class="container-fluid no-gutters" -->
+    <div id="palette" style="display:flex; flex-direction:column; padding-left:1.5em; padding-right:.5em; padding-top:.5em; padding-bottom:.5em;">
+
+      <div id="draggableInfo" style="flex-grow:3;">
+
+      </div>
+
+
+
+      <!-- <div class="row mr-2 ml-2 mt-4" id="spawnPalette">
+        <div class="col-12" id="spawnPaletteTitle">Draggable Palette</div>
+        <hr>
+      </div> -->
+
+
+
+      <div id="optionsPanel" style="flex-grow:1; display:flex; justify-content:center; flex-direction:column;">
+        <button onclick="Data.saveJSON()">Download JSON Char File</button> <br>
+
+        <div>
+          <label>Import Character File:
+            <input type="file"
+             id="fileInput" name="jsonFile"
+             accept="application/JSON"
+             onchange="Data.loadFromJSON(event)" single>
+         </label>
+        </div>
+        <hr>
+        <button style="background-color:#750d02; max-height:2em;" class="darkWoodBtn trayButton col-5 offset-3" onclick="resetStorage()">Clear Data</button>
+      </div>
+
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+<div >
+</div>
+
+
+  <div id="toggleBar" class="collapsedToggleBar">
+    <div id="toggleBarHeader" onclick="toggleBar.toggleBody()">Click to Open/Close ToggleBar</div>
+    <div id="toggleBarBody" class="noHeight">
+      <table style="width:100%; height:100%;">
+        <tr style="width:100%; height:80%; vertical-align:top;">
+          <td style=" width:3%;">
+            <table style="width:100%; height:90%;">
+
+            <tr><td style=""><button id="toggleShuffleLeftBtn" onclick="toggleBar.shuffleBar(-1)"> < Rearrange bar</button></td></tr>
+            <tr><td style=""><button id="toggleShuffleRightBtn" onclick="toggleBar.shuffleBar(+1)"> > Rearrange bar</button></td></tr>
+
+            </table>
+          </td>
+          <td style=" width:12%;"><input id="ToggleTitle" onchange="toggleBar.titleChange(event.target.value)" type="text"></td>
+          <td style="width:10%;"><div id="toggleSlot0" data-toggle-slot-id="0" class="toggleSlot" ondrop="toggleBar.drop(event, this)" ondragover="toggleBar.allowDrop(event)"></div></td>
+          <td style="width:10%;"><div id="toggleSlot1" data-toggle-slot-id="1" class="toggleSlot" ondrop="toggleBar.drop(event, this)" ondragover="toggleBar.allowDrop(event)"></div></td>
+          <td style="width:10%;"><div id="toggleSlot2" data-toggle-slot-id="2" class="toggleSlot" ondrop="toggleBar.drop(event, this)" ondragover="toggleBar.allowDrop(event)"></div></td>
+          <td style="width:10%;"><div id="toggleSlot3" data-toggle-slot-id="3" class="toggleSlot" ondrop="toggleBar.drop(event, this)" ondragover="toggleBar.allowDrop(event)"></div></td>
+          <td style="width:10%;"><div id="toggleSlot4" data-toggle-slot-id="4" class="toggleSlot" ondrop="toggleBar.drop(event, this)" ondragover="toggleBar.allowDrop(event)"></div></td>
+          <td style="width:10%;"><div id="toggleSlot5" data-toggle-slot-id="5" class="toggleSlot" ondrop="toggleBar.drop(event, this)" ondragover="toggleBar.allowDrop(event)"></div></td>
+          <td style="width:10%;"><div id="toggleSlot6" data-toggle-slot-id="6" class="toggleSlot" ondrop="toggleBar.drop(event, this)" ondragover="toggleBar.allowDrop(event)"></div></td>
+          <td style="padding-right:5%; width:10%; overflow:auto;">
+            <table style="width:100%; height:90%;">
+              <tr><td><button onclick="toggleBar.changeBar(-1)" id="toggleBarPrevBtn">Prev</button></td><td><button onclick="toggleBar.changeBar(+1)" id="toggleBarNextBtn">Next</button></td></tr>
+              <tr><td style="padding-left:25%; width:50%;"><button onclick="toggleBar.newToggle()">New Toggle</button></td></tr>
+              <tr><td><button id="newTogBar"  onclick="toggleBar.addBar()">New Bar</button></td><td><button id="deleteTogBar"  onclick="toggleBar.deleteBar()">Delete Bar</button></td></tr>
+              <tr></tr>
+            </table>
+          </td>
+        </tr>
+        <tr style="width:100%; height:20%;">
+        </tr>
+      </table>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- DRAGGABLE TEMPLATES -->
+
+ <template id="defaultDrag">
+   <div  class="draggable testDraggable"  style="width:15%; height:10%; overflow:hidden; position:absolute; display:flex; flex-direction:column;">
+     <div style="display:flex; min-height:1.5em; width:100%;"><input type="text" class="dragTitleInput" style="height:100%; width:100%;"></div>
+     <div style="display:flex; height:100%; width:100%;"><input class="input baseModInput"   type="number" style="height:100%; width:100%;"><input  disabled class ="finalMod" type="number" style="height:100%; width:100%;"></div>
+     <div class="hiddenText"></div>
+   </div>
+ </template>
+
+ <template id="baseOnlyDrag">
+   <div  class="draggable testDraggable"  style="width:15%; height:10%; overflow:hidden; position:absolute; display:flex; flex-direction:column;">
+     <div style="display:flex; min-height:1.5em; width:100%;"><input type="text" class="dragTitleInput" style="height:100%; width:100%;"></div>
+     <div style="display:flex; height:100%; width:100%;"><input class="input baseModInput"   type="number" style="height:100%; width:100%;"></div>
+     <div class="hiddenText"></div>
+   </div>
+ </template>
+
+ <template id="receiveOnlyDrag">
+   <div  class="draggable testDraggable"  style="width:15%; height:10%; overflow:hidden; position:absolute; display:flex; flex-direction:column;">
+     <div style="display:flex; min-height:1.5em; width:100%;"><input type="text" class="dragTitleInput" style="height:100%; width:100%;"></div>
+     <div style="display:flex; height:100%; width:100%;"><input disabled  class ="finalMod" type="number" style="height:100%; width:100%;"></div>
+     <div class="hiddenText"></div>
+   </div>
+ </template>
+
+ <template id="skillBarDrag">
+   <div  class="draggable skillBarDraggable"  style="width:35%; height:7%; overflow:hidden; position:absolute; display:flex; ">
+     <input  disabled class ="finalMod" type="number" style="height:100%;  width:4em;">
+     <input type="text" class="dragTitleInput title" style="height:100%; width:10em; flex-grow:5;">
+     <input class="input baseModInput"   type="number" style="height:100%; width:4em;">
+     <div class="hiddenText"></div>
+   </div>
+ </template>
+
+
+
+ <template id="textBoxDrag">
+   <div  class="draggable textBoxDraggable"  style="width:35%; height:7%; overflow:hidden; position:absolute; display:flex; ">
+
+     <input type="text" class="dragTitleInput title" style="height:100%; width:100%;">
+
+     <div class="hiddenText"></div>
+   </div>
+ </template>
+
+ <!-- Image templates -->
+
+ <template id="squareImage">
+   <div  class="draggable squareImage imageSegment"  style="width:15%; height:10%; overflow:hidden; position:absolute;">
+     <div class="hiddenText"></div>
+   </div>
+ </template>
+
+ <!-- TEMPLAT END -->
+ <!-- GENERAL TEMPLATES -->
+<template id="overlayTemplate">
+  <div id="overlay"></div>
+
+</template>
+<!-- GENPLATES END -->
+
+  <div id="footer" style="" class="container-fluid">
+
+      <div class="row h-100 pb-4">
+        <div class="col" >
+          <br>
+          <p><b>E-Mail any questions, requests or concerns to:</b></p>
+          <hr>
+          <p><emsp>ssonson@alumni.nd.edu</p>
+          <hr>
+          <p><b>Other Higgsy DnD Tools</b></p>
+          <a href="https://prinnybaal.github.io/Higgsy-s-U-Craft/" target="none">Higgsy's U-Craft (Magic Item Cost Estimation)</a><br>
+          <a href="https://prinnybaal.github.io/Higgsy-sCardCobbler/" target="none">Higgsy's Item Card Cobbler</a>
+          <hr>
+
+        </div>
+        <div class="col" >
+          <br>
+          <p><b>Credits</b></p>
+          <hr>
+          <p><emsp>Page and UI Icons:<a href="icons8.com" target="none">icons8.com</a></p>
+          <p><emsp>Site Mascot Higgsy, originally sprite by: <a href="https://lemmasoft.renai.us/forums/viewtopic.php?f=52&t=48688&p=501514&hilit=female#p501514" target="none">GrammaHobbes</a></p>
+          <p><emsp>Character and toggle art: "This character sheet uses trademarks and/or copyrights owned by Paizo Inc., which are used under Paizo's Community Use Policy. We are expressly prohibited from charging you to use or access this content. This character sheet is not published, endorsed, or specifically approved by Paizo Inc. For more information about Paizo's Community Use Policy, please visit paizo.com/communityuse. For more information about Paizo Inc. and Paizo products, please visit paizo.com."</p>
+
+
+
+
+        </div>
+      </div>
+      <hr>
+  </div>
+</body>

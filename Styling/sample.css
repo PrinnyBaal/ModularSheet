@@ -1,0 +1,1313 @@
+input:disabled::-webkit-inner-spin-button {
+  position: absolute;
+  left: 100%;
+}
+
+input:disabled {
+  color: black;
+}
+
+input {
+  min-width: 0;
+}
+
+.imgButton {
+  box-shadow: inset 2px 2px 1px rgba(255, 255, 255, 0.4), inset -2px -2px 1px rgba(0, 0, 0, 0.4);
+}
+
+.iconButton {
+  background-repeat: no-repeat;
+  background-size: 15% 100%;
+  padding-left: 10%;
+  background-position: 5% 0%;
+}
+
+.imgButton:hover {
+  box-shadow: inset 2px 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 2em;
+  height: 1.3em;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1em;
+  width: 0.9em;
+  left: 0.1em;
+  bottom: 0.1em;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(0.9em);
+  -ms-transform: translateX(0.9em);
+  transform: translateX(0.9em);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+#workBar {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  background-color: #eae6e9;
+}
+
+#workSpace {
+  display: flex;
+  justify-content: space-between;
+  background-color: grey;
+  height: 98vh;
+}
+#workSpace #toggleCol {
+  background-color: #3b413a;
+  flex-grow: 1;
+  width: 25%;
+  position: relative;
+  transition: width 0.5s ease-in;
+}
+#workSpace #toggleCol .collapseButton {
+  right: 0;
+  z-index: 5;
+}
+#workSpace #toggleCol #selectionSection #creationForm {
+  width: 72%;
+  padding-top: 0.5em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  background-color: #1a1618;
+  overflow: hidden;
+}
+#workSpace #toggleCol #selectionSection #pageSegment {
+  overflow-y: auto;
+  background-color: #3b413a;
+  width: 28%;
+}
+#workSpace #toggleCol #selectionSection #pageSelector {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+#workSpace #toggleCol #selectionSection #pageSelector .pagePreview {
+  width: 5em;
+  height: 5em;
+  border: 2px solid white;
+  margin-top: 0.5em;
+  flex-shrink: 0;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: white;
+  border-radius: 5%;
+}
+#workSpace #toggleCol #selectionSection #pageSelector .pagePreview.selectedPreview {
+  border-style: groove;
+  border-width: thick;
+  border-color: gold;
+}
+#workSpace #toggleCol #selectionSection #pageSelector .pagePreview .previewPip {
+  position: absolute;
+  width: 21%;
+  height: 21%;
+  border-radius: 5%;
+  background-size: cover;
+  transition: width 0.25s ease-out;
+}
+#workSpace #toggleCol #selectionSection #pageSelector .pagePreview .previewPip:hover {
+  width: 33%;
+  height: 33%;
+}
+#workSpace #toggleCol #selectionSection #pageSelector .pagePreview .previewPageMove {
+  bottom: 0;
+  left: 0;
+  background-color: grey;
+  opacity: 0;
+  background-image: url("../images/ui/icon8DownArrow.png");
+}
+#workSpace #toggleCol #selectionSection #pageSelector .pagePreview .previewPageDelete {
+  top: 0;
+  right: 0;
+  background-color: #cf4540;
+  opacity: 0;
+  background-image: url("../images/trashIcon.png");
+}
+#workSpace #toggleCol #selectionSection #pageSelector .pagePreview .previewPageEdit {
+  bottom: 0;
+  right: 0;
+  background-color: grey;
+  opacity: 0;
+  background-size: cover;
+  background-image: url("../images/ui/icon8PullDown.png");
+}
+#workSpace #toggleCol #selectionSection #pageSelector .pagePreview .previewPageNum {
+  top: 0;
+  left: 0;
+  background-color: darkgreen;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  width: 33%;
+  height: 33%;
+}
+#workSpace #toggleCol #selectionSection #pageSelector .pagePreview .iconSelectContainer {
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: -25%;
+  width: 6.5rem;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+  align-content: flex-start;
+}
+#workSpace #toggleCol #selectionSection #pageSelector .pagePreview .iconSelectContainer .selectableIcon {
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid black;
+  background-color: white;
+  background-size: cover;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+#workSpace #toggleCol #selectionSection #pageSelector .pagePreview .iconSelectContainer .closeIcon {
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid black;
+  background-color: grey;
+  background-size: cover;
+  background-image: url("https://res.cloudinary.com/metaverse/image/upload/v1548289539/icons8-delete-48.png");
+  flex-shrink: 0;
+  cursor: pointer;
+}
+#workSpace #toggleCol #selectionSection #pageSelector .pagePreview .iconSelectContainer .closeIcon:hover {
+  background-color: black;
+}
+#workSpace #toggleCol #selectionSection #pageSelector .pagePreview:hover .previewPageMove {
+  opacity: 0.8;
+}
+#workSpace #toggleCol #selectionSection #pageSelector .pagePreview:hover .previewPageDelete {
+  opacity: 0.8;
+}
+#workSpace #toggleCol #selectionSection #pageSelector .pagePreview:hover .previewPageEdit {
+  opacity: 0.8;
+}
+#workSpace #toggleCol #selectionSection #pageSelector .pagePreview:hover .previewPip:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+#workSpace #toggleCol #drawDisplay {
+  background-color: #eae6e9;
+  position: relative;
+  height: 30%;
+  width: 100%;
+}
+#workSpace #toggleCol #drawDisplay #drawTitle {
+  height: 20%;
+  width: 100%;
+  border: solid;
+  overflow: hidden;
+  text-align: center;
+}
+#workSpace #toggleCol #drawDisplay #drawBody {
+  height: 80%;
+  width: 100%;
+  border: solid;
+  border-color: black;
+  overflow: auto;
+  color: black;
+  transition: height 0.5s ease-in;
+}
+#workSpace #toggleCol.collapsed {
+  width: 1.25rem !important;
+  flex-grow: 0;
+  padding-right: 1.25rem !important;
+  overflow: hidden;
+}
+#workSpace #toggleCol.collapsed #selectionSection {
+  visibility: hidden;
+}
+#workSpace #toggleCol.collapsed #drawBody {
+  visibility: hidden;
+}
+#workSpace #sheetCol {
+  background-color: #1a1618;
+  flex-grow: 3;
+  width: 50%;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+#workSpace #sheetCol .charSheet {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  border-radius: 1%;
+  overflow: visible;
+}
+#workSpace #sheetCol .charSheet .draggable {
+  box-shadow: 7px 9px 4px rgba(0, 0, 0, 0.5);
+}
+@media only screen and (max-width: 1300px) {
+  #workSpace #sheetCol .charSheet .draggable input[type=number]::-webkit-inner-spin-button {
+    position: absolute;
+    left: 100%;
+  }
+}
+#workSpace #sheetCol .charSheet .draggable.locked {
+  box-shadow: none;
+}
+#workSpace #sheetCol .charSheet .draggable.locked:hover {
+  box-shadow: inset 2px 2px 2px rgba(255, 255, 255, 0.4), inset -2px -2px 2px rgba(0, 0, 0, 0.4);
+}
+#workSpace #sheetCol .charSheet .draggable.borderless {
+  border-style: hidden;
+}
+#workSpace #sheetCol .charSheet .draggable.borderless input {
+  border-style: hidden !important;
+}
+#workSpace #sheetCol .charSheet .draggable.unbacked {
+  background-color: transparent;
+}
+#workSpace #sheetCol .charSheet .draggable.unbacked input {
+  background-color: transparent !important;
+}
+#workSpace #sheetCol .charSheet .draggable.receiverBorder {
+  border-style: groove;
+  border-width: thick;
+  border-color: gold;
+}
+#workSpace #sheetCol .charSheet .draggable.sourceBorder {
+  border-style: dashed;
+  border-width: thick;
+  border-color: green;
+}
+#workSpace #sheetCol .charSheet .draggable.bannedBorder {
+  border-style: dashed;
+  border-width: thick;
+  border-color: red;
+}
+#workSpace #sheetCol #activeSheet {
+  background-size: 100% 100%;
+}
+#workSpace #inspectCol {
+  flex-grow: 1;
+  width: 25%;
+  position: relative;
+  transition: width 0.5s ease-in;
+  background-color: #3b4456;
+  color: #eae6e9;
+}
+#workSpace #inspectCol .collapseButton {
+  left: 0;
+  z-index: 5;
+  color: black;
+}
+#workSpace #inspectCol #frontSortButton {
+  background-image: url("../images/ui/icon8FrontSort.png");
+}
+#workSpace #inspectCol #backSortButton {
+  background-image: url("../images/ui/icon8BackSort.png");
+}
+#workSpace #inspectCol #palette {
+  height: 100%;
+  width: 100%;
+  transition: width 0.5s ease-in;
+}
+#workSpace #inspectCol #palette #draggableInfo {
+  border-bottom: 1px dashed #eae6e9;
+}
+#workSpace #inspectCol #palette #optionsPanel hr {
+  margin-left: 0;
+  margin-right: 0;
+  color: #eae6e9;
+}
+#workSpace #inspectCol.collapsed {
+  width: 1.25rem !important;
+  flex-grow: 0;
+}
+
+.hiddenText {
+  position: absolute;
+  top: 100%;
+  max-width: 20rem;
+  min-width: 175px;
+  height: auto;
+  max-height: 0;
+  background-color: orange;
+  overflow: hidden;
+  border: 2px dashed black;
+  background-color: #eae6e9;
+  font-size: 1rem !important;
+  font-family: "Verdana";
+  z-index: 20;
+  padding: 0.5em;
+}
+
+.hasHiddenText.locked:hover {
+  overflow: visible !important;
+}
+.hasHiddenText.locked:hover .hiddenText {
+  max-height: 10em;
+  height: auto;
+  overflow: auto;
+  transition: max-height 0.5s ease-in;
+}
+
+.testDraggable {
+  box-shadow: 7px 9px 4px rgba(0, 0, 0, 0.5);
+  border: 2px solid black;
+}
+.testDraggable .title {
+  background-color: #eae6e9;
+  text-align: center;
+}
+.testDraggable .input {
+  background-color: white;
+  text-align: center;
+}
+.testDraggable .finalMod {
+  background-color: grey;
+  text-align: center;
+  pointer-events: none;
+}
+
+.skillBarDraggable {
+  box-shadow: 7px 9px 4px rgba(0, 0, 0, 0.5);
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+.skillBarDraggable .title {
+  background-color: #eae6e9;
+  text-align: center;
+}
+.skillBarDraggable .input {
+  background-color: white;
+  text-align: center;
+}
+.skillBarDraggable .finalMod {
+  background-color: grey;
+  text-align: center;
+  pointer-events: none;
+}
+
+.textBoxDraggable {
+  box-shadow: 7px 9px 4px rgba(0, 0, 0, 0.5);
+  border: 2px solid black;
+}
+.textBoxDraggable .title {
+  background-color: #eae6e9;
+  text-align: center;
+}
+
+.squareImage {
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+/* Animations */
+/* ------------------------------ */
+@keyframes shimmer {
+  0% {
+    bottom: 0em;
+  }
+  25% {
+    bottom: 0.25em;
+  }
+  50% {
+    background-color: #cf4540;
+    background-image: linear-gradient(to bottom, purple, white);
+    bottom: 0.5em;
+  }
+  75% {
+    bottom: 0.25em;
+  }
+  100% {
+    bottom: 0em;
+  }
+}
+.shimmering {
+  animation: shimmer 2s infinite;
+}
+
+#overlay {
+  position: fixed;
+  /* Sit on top of the page content */
+  width: 100%;
+  /* Full width (cover the whole page) */
+  height: 100%;
+  /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Black background with opacity */
+  cursor: pointer;
+  /* Add a pointer on hover */
+  overflow: auto;
+  z-index: 3;
+}
+
+.bubbled {
+  z-index: 5;
+}
+
+.collapsed {
+  width: 1vw !important;
+  /* transition: width .5s ease-in; */
+}
+
+body {
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-image: url("https://res.cloudinary.com/metaverse/image/upload/v1538327889/Backgrounds/zwartevilt__2X.jpg");
+  background-size: cover;
+}
+
+.testBox {
+  background-color: #f1f1f1;
+  /* border: 1px solid #d3d3d3; */
+  z-index: 2;
+  width: 100px;
+  height: 100px;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  box-shadow: 7px 9px 4px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.dependentBox {
+  background-color: #f1f1f1;
+  /* border: 1px solid #d3d3d3; */
+  z-index: 2;
+  width: 100px;
+  height: 100px;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  box-shadow: 7px 9px 4px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.artBox {
+  background-color: #f1f1f1;
+  /* border: 1px solid #d3d3d3; */
+  z-index: 1;
+  width: 100px;
+  height: 100px;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  box-shadow: 7px 9px 4px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.artCameo {
+  border-radius: 50%;
+}
+
+.stackBox {
+  background-color: #f1f1f1;
+  /* border: 1px solid #d3d3d3; */
+  z-index: 2;
+  width: 300px;
+  height: 30px;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  box-shadow: 7px 9px 4px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+#pageNavigation {
+  width: 60%;
+  margin-left: 20%;
+  height: 20px;
+  bottom: -40px;
+}
+
+#reversePageButton {
+  width: 8%;
+  height: 100%;
+  opacity: 0.5;
+  position: absolute;
+  left: -12%;
+  transition: opacity 0.2s ease-in;
+  background-color: black;
+  color: white;
+  z-index: 5;
+}
+
+#forwardPageButton {
+  width: 8%;
+  height: 100%;
+  opacity: 0.5;
+  position: absolute;
+  right: -12%;
+  transition: opacity 0.2s ease-in;
+  background-color: black;
+  color: white;
+  z-index: 5;
+}
+
+#reversePageButton:hover {
+  opacity: 1;
+}
+
+#forwardPageButton:hover {
+  opacity: 1;
+}
+
+.collapseButton {
+  border: 2px solid #d3d3d3;
+  background-color: silver;
+  position: absolute;
+  width: 1.25rem;
+  height: 6rem;
+  top: 45%;
+  word-wrap: break-word;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.collapseButton:hover {
+  background-color: white;
+}
+
+.testBoxTitleStyle {
+  background-color: black;
+  color: white;
+  height: 30%;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 0;
+}
+
+.dependentBoxTitleStyle {
+  background-color: black;
+  color: white;
+  height: 30%;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 0;
+}
+
+.stackBoxTitleStyle {
+  width: 100%;
+  background-color: black;
+  color: white;
+  height: 100%;
+}
+
+.label {
+  background-color: black;
+  color: white;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+}
+
+.testInput {
+  width: 100%;
+  background-color: silver;
+  height: 80%;
+  position: absolute;
+  bottom: 0;
+}
+
+.charSquare {
+  border: solid;
+  border-color: #461F00;
+  background-color: #8C6546;
+  border-radius: 1%;
+}
+
+.testBoxBaseInputStyle {
+  width: 50%;
+  background-color: white;
+  height: 70%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.stackBoxBaseInputStyle {
+  width: 100%;
+  background-color: white;
+  height: 100%;
+}
+
+.testBoxFinalModStyle {
+  width: 50%;
+  background-color: grey;
+  height: 70%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+}
+
+.dependentBoxFinalModStyle {
+  width: 100%;
+  background-color: grey;
+  height: 70%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+}
+
+.stackBoxFinalModStyle {
+  width: 100%;
+  background-color: grey;
+  height: 100%;
+  text-align: center;
+}
+
+#htmlPalette {
+  /* display:none; */
+  position: absolute;
+}
+
+#imgPalette {
+  display: none;
+  position: absolute;
+}
+
+#spawnPalette {
+  height: 30%;
+  /* background-color:black; */
+  background: #000000;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #000000, #434343);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #000000, #434343);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  overflow: auto;
+}
+
+.imgSlot {
+  box-shadow: inset 2px 2px 2px rgba(255, 255, 255, 0.4), inset -2px -2px 2px rgba(0, 0, 0, 0.4);
+  border-style: solid;
+  border-width: thin;
+  border-color: silver;
+  border-radius: 1%;
+  height: 50px;
+  width: 50px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+/* .sampleImg{
+  object-fit: contain;
+} */
+.imgSlot:hover {
+  border-color: gold;
+}
+
+.invisible {
+  display: none;
+}
+
+.noHeight {
+  height: 0 !important;
+}
+
+#spawnPaletteTitle {
+  color: white;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+#draggableInfo {
+  height: 40%;
+  width: 100%;
+  overflow: auto;
+  padding-top: 20px;
+}
+
+#printScreen {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+
+#creditPage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 80vh;
+  width: 60vw;
+  background-color: #F5DEB3;
+  border-top-left-radius: 4%;
+  border-top-right-radius: 4%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+  overflow: auto;
+}
+
+#hintBox {
+  background: #232526;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #999999, #CCCCCC);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #999999, #CCCCCC);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: black;
+  position: absolute;
+  left: 10px;
+  bottom: 50vh;
+  height: 35vh;
+  width: 15vw;
+  border-radius: 1%;
+  font-size: 1.25em;
+  /* font-size: 1vmax; */
+  overflow: auto;
+  padding: 1%;
+  z-index: 5;
+}
+
+.darkWoodBtn {
+  background-color: #461F00;
+  color: white;
+}
+
+.darkWoodBtn:disabled {
+  background-color: grey;
+  color: black;
+}
+
+.darkWoodBtn:disabled:hover {
+  background-color: grey;
+  color: black;
+}
+
+.trayButton {
+  border-style: solid;
+  border-color: silver;
+  border-width: thin;
+  box-shadow: inset 2px 2px 1px rgba(255, 255, 255, 0.4), inset -2px -2px 1px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+.trayButton:hover {
+  box-shadow: inset 2px 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.trayButton:disabled {
+  background-color: grey !important;
+  color: black !important;
+}
+
+.trayButton:disabled:hover {
+  box-shadow: inset 2px 2px 1px rgba(255, 255, 255, 0.4), inset -2px -2px 1px rgba(0, 0, 0, 0.4);
+  cursor: default;
+}
+
+.trayButton:disabled:active {
+  box-shadow: inset 2px 2px 1px rgba(255, 255, 255, 0.4), inset -2px -2px 1px rgba(0, 0, 0, 0.4);
+}
+
+.trayButton:active {
+  box-shadow: inset 25px 25px 20px rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+}
+
+.lightWoodBtn {
+  background-color: #8C6546;
+  color: black;
+}
+
+.lightWoodBtn:disabled {
+  background-color: grey;
+  color: black;
+}
+
+.lightWoodBtn:disabled:hover {
+  background-color: grey;
+  color: black;
+}
+
+#toggleBar {
+  width: 100%;
+  z-index: 5;
+}
+#toggleBar.collapsedToggleBar {
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+}
+#toggleBar #toggleBarHeader {
+  height: 3vh;
+  background-color: black;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+#toggleBar #toggleBarBody {
+  height: 15vh;
+  background-color: #1a1618;
+  transition: height 0.5s ease-in;
+  vertical-align: top;
+}
+#toggleBar #toggleBarBody #newTogBar {
+  background-color: #eae6e9;
+}
+#toggleBar #toggleBarBody #deleteTogBar {
+  color: #eae6e9;
+  background-color: #cf4540;
+}
+#toggleBar #toggleBarBody .toggleSlot {
+  height: 14vh;
+  width: 100%;
+  border-style: groove;
+  border-width: thick;
+  border-color: black;
+  background-color: #eae6e9;
+}
+#toggleBar #toggleBarBody .toggleSlot .toggle {
+  cursor: grab;
+}
+#toggleBar #toggleBarBody .toggleSlot .toggle:active {
+  cursor: grabbing;
+}
+
+#ToggleTitle {
+  height: 90%;
+  width: 100%;
+  text-align: center;
+}
+
+.toggleNameTag {
+  height: 20%;
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
+  overflow: auto;
+}
+
+.toggleSelected {
+  border-style: groove;
+  border-width: thin;
+  border-color: gold;
+}
+
+.toggleSelected > .toggleImg {
+  filter: none !important;
+}
+
+.toggleImg {
+  width: 100%;
+  height: 80%;
+  border-bottom: solid;
+  border-width: thick;
+  filter: grayscale(100%);
+}
+
+.toggleImg:hover ~ .toggleSettings {
+  opacity: 1;
+  transition: opacity 0.25s ease-in;
+}
+
+.toggleSettings {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 15%;
+  width: 15%;
+  border-style: dashed;
+  border-width: thin;
+  background-color: white;
+  padding: 2px;
+  opacity: 0;
+  transition: opacity 0.25s ease-in;
+}
+
+.toggleSettings:hover {
+  opacity: 1;
+}
+
+.effectDeleter {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 16%;
+  width: 10%;
+  border-style: dashed;
+  border-width: thin;
+  background-color: grey;
+  padding: 2px;
+  z-index: 1;
+}
+
+.effectDeleter:hover {
+  height: 18%;
+  width: 12%;
+  border-style: solid;
+  border-width: thin;
+  background: black;
+}
+
+.toggleEffectTable {
+  border-style: solid;
+  position: relative;
+}
+
+#trayNavigation {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+#charChanger {
+  position: absolute;
+  height: 70px;
+  width: 476px;
+  top: -72px;
+  background-color: red;
+  margin-left: 10%;
+}
+
+#charTitleBanner {
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+#charTitleBanner:hover ~ #charChoiceMenu {
+  opacity: 1;
+  transition: width 0.25s ease-in, opacity 0.5s ease-in;
+}
+
+#charChoiceMenu:hover {
+  opacity: 1;
+  width: 25%;
+  transition: width 0.25s ease-in, opacity 0.5s ease-in;
+  color: black;
+}
+
+#charChoiceMenu {
+  opacity: 0;
+  position: absolute;
+  bottom: -10px;
+  right: 0;
+  width: 25px;
+  background-color: white;
+  color: white;
+  transition: width 0.25s ease-in, opacity 0.5s ease-in;
+}
+
+#descriptionHolder {
+  height: auto;
+  width: 90%;
+  border: solid;
+  white-space: pre-wrap;
+}
+#descriptionHolder textarea {
+  height: 100%;
+  width: 100%;
+  white-space: pre-wrap;
+  margin-bottom: -3%;
+  height: 8em;
+}
+
+#toggleDescription {
+  height: 100%;
+  width: 100%;
+  white-space: pre-wrap;
+}
+
+.hoverFlow {
+  overflow: hidden;
+}
+
+.hoverflow:hover {
+  overflow: auto;
+}
+
+#alertBanner {
+  height: 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  text-align: center;
+  background-color: black;
+  opacity: 0.9;
+  color: white;
+  transition: height 2s;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.activeAlert {
+  height: 2em !important;
+}
+
+#shopBanner {
+  height: 15vh;
+  background-color: #1a1618;
+  overflow: hidden;
+}
+#shopBanner #bannerImage {
+  background-image: url("https://res.cloudinary.com/metaverse/image/upload/v1541010545/Avatars/Higgsy/side_higgsMad.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  border: 4px groove #3b413a;
+}
+#shopBanner #bannerTitle {
+  font-size: 250%;
+  font-family: "Monotype Corsiva";
+  color: #cf4540;
+}
+#shopBanner #bannerTagline {
+  font-size: 120%;
+  font-family: "Lucida Handwriting";
+  color: #cf4540;
+}
+
+#footer {
+  margin-top: 2em;
+  background-color: #eae6e9;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+body {
+  background-color: #1a1618;
+  font-family: "Verdana";
+}
+body button:hover {
+  cursor: pointer;
+}
+
+#imgSelectContainer {
+  padding: 0;
+  height: 1300px;
+}
+#imgSelectContainer #catalogueName {
+  background-color: #1a1618;
+  font-family: "Monotype Corsiva";
+  font-size: 2em;
+  text-align: center;
+  color: #cf4540;
+}
+#imgSelectContainer #catalogueTags {
+  height: 15%;
+  background-color: #3b413a;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  white-space: nowrap;
+  color: #eae6e9;
+}
+#imgSelectContainer #catalogueTags:hover {
+  overflow-x: auto;
+}
+#imgSelectContainer #catalogueGrid {
+  height: 35%;
+  background-color: #1a1618;
+  overflow: hidden;
+}
+#imgSelectContainer #catalogueGrid:hover {
+  overflow: auto;
+}
+#imgSelectContainer #catalogueDescription {
+  height: 25%;
+  background-color: #3b413a;
+  color: #eae6e9;
+  border: 3px solid black;
+  border-radius: 5px;
+  overflow: auto;
+}
+
+textarea {
+  width: 100%;
+  height: 6em;
+}
+
+.fontSelector {
+  width: 8em !important;
+}
+
+.formGroupTitle {
+  font-family: "Monotype Corsiva";
+  font-size: 2em;
+  text-align: center;
+  color: #cf4540;
+}
+
+#formWorkspace {
+  width: 700px;
+  height: 100%;
+  overflow: hidden;
+  background-color: #393e46;
+}
+#formWorkspace .formContainer {
+  background-color: #1a1618;
+  border: 5px groove #000000;
+}
+#formWorkspace .formContainer .formStyle {
+  background-color: #3b413a;
+  color: #eae6e9;
+  border: 2px inset #eae6e9;
+  border-radius: 5%;
+}
+#formWorkspace .formContainer .addFormButton {
+  width: 100%;
+}
+#formWorkspace .catalogueAddForm {
+  color: #eae6e9;
+}
+
+#formWorkspace:hover {
+  overflow: auto;
+}
+
+#cardContainer {
+  width: 400px;
+  background-color: #1a1618;
+  box-shadow: 1px 1px 5px #555 inset;
+}
+
+.badge {
+  line-height: 1.1;
+  padding: 0.2em 0.2em;
+  border: 2px solid black;
+  background-color: #eae6e9;
+  color: black;
+}
+
+.hidden {
+  display: none;
+}
+
+.closableDiv {
+  position: relative;
+}
+
+.closeButton {
+  opacity: 0;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: 25px;
+  width: 25px;
+  background-color: grey;
+  background-image: url("https://res.cloudinary.com/metaverse/image/upload/v1548289539/icons8-delete-48.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: 1px solid black;
+  transition: opacity 0.5s;
+  z-index: 5;
+}
+
+.closableDiv:hover .closeButton {
+  opacity: 1;
+}
+
+.closeButton:hover {
+  cursor: pointer;
+}
+
+.filterToggle {
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  height: 0;
+  top: 50%;
+}
+.filterToggle input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.filterToggle label {
+  background-color: grey;
+  border-radius: 5%;
+  -webkit-box-shadow: 0px 5px 8px 3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 5px 8px 3px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 5px 8px 3px rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+}
+.filterToggle input:checked + label {
+  background-color: #cf4540;
+  outline-style: groove;
+  outline-color: white;
+  outline-width: 2px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.gridTile {
+  border: 2px solid black;
+  width: 10%;
+  height: 100%;
+  background-size: 100% 100%;
+  background-color: #3b413a;
+}
+.gridTile.activeTile {
+  border: 2px groove white;
+}
+
+.gridTile:hover {
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=sample.css.map */
