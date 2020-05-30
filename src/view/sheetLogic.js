@@ -1702,25 +1702,25 @@ let pageSelect={
 
     let trayHTML="";
     console.log(pages);
-    if (!pageIcons){
+    // if (!pageIcons){
+    //
+    //   // $.ajax({
+    //   //     url : iconFolder,
+    //   //     success: function (data) {
+    //   //         pageIcons={};
+    //   //         $(data).find("a").attr("href", function (i, val) {
+    //   //
+    //   //             let path=iconFolder + val
+    //   //             if( val.match(/\.(jpe?g|png|gif)$/) ) {
+    //   //                 //$("body").append( "<img src='"+  +"'>" );
+    //   //                 pageIcons[val]=path;
+    //   //             }
+    //   //         });
+    //   //         pageSelect.loadTray();
+    //   //     }
+    //   // });
+    // }
 
-      $.ajax({
-          url : iconFolder,
-          success: function (data) {
-              pageIcons={};
-              $(data).find("a").attr("href", function (i, val) {
-
-                  let path=iconFolder + val
-                  if( val.match(/\.(jpe?g|png|gif)$/) ) {
-                      //$("body").append( "<img src='"+  +"'>" );
-                      pageIcons[val]=path;
-                  }
-              });
-              pageSelect.loadTray();
-          }
-      });
-    }
-    else{
       for (let i=0; i<pages.length; i++){
         trayHTML+=`
         <div onclick="pageSelect.changePage(${i})" id="pagePreview${i}"
@@ -1738,7 +1738,7 @@ let pageSelect={
       if (DrawSys.state.active){
         $(".pagePreview").addClass("bubbled");
       }
-    }
+    
     console.log(pageIcons);
 
   },

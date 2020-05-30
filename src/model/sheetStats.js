@@ -552,7 +552,21 @@ let ProfileFuncs={
 
 let userData;
 
+$.ajax({
+    url : iconFolder,
+    success: function (data) {
+        pageIcons={};
+        $(data).find("a").attr("href", function (i, val) {
 
+            let path=iconFolder + val
+            if( val.match(/\.(jpe?g|png|gif)$/) ) {
+                //$("body").append( "<img src='"+  +"'>" );
+                pageIcons[val]=path;
+            }
+        });
+        
+    }
+});
 
 if (localStorage.getItem("userData") === null) {
 
