@@ -2,8 +2,8 @@
 
 
 let pageIcons=null; //becomes an object
-let iconFolder = "../images/";
-let defaultIcon="../images/dragonIcon.png";
+let iconFolder = "./images/";
+let defaultIcon="./images/dragonIcon.png";
 
 
 let ci={

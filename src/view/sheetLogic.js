@@ -1739,6 +1739,7 @@ let pageSelect={
         $(".pagePreview").addClass("bubbled");
       }
     }
+    console.log(pageIcons);
 
   },
   addPage:()=>{
