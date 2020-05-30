@@ -5,43 +5,65 @@ sheetProj.view.sheetLogic = {
     fontSelector.getFontList();
     SheetGrid.fitToContainer();
     SheetGrid.createGrid();
+    if (localStorage.getItem("userData") === null) {
 
-    $.ajax({
-        url : iconFolder,
-        success: function (data) {
-            pageIcons={};
-            $(data).find("a").attr("href", function (i, val) {
-                console.log(val);
-                let path=iconFolder + val
-                if( val.match(/\.(jpe?g|png|gif)$/) ) {
-                    //$("body").append( "<img src='"+  +"'>" );
-                    pageIcons[val]=path;
-                }
-            });
-            if (localStorage.getItem("userData") === null) {
-
-              $.getJSON('./src/model/sampleChar.json', function(data) {
-                  console.log(data);
-                  activeProfile=data;
-                  userData={
-                    activeProfile:"Default",
-                    profiles:{
-                      "Default":activeProfile
-                    }
-                  };
-
-                  localStorage.setItem('userData', JSON.stringify(userData));
-                  initialLoad();
-
-              });;
-
-            }else{
-              Data.loadData();
-              initialLoad();
-
+      $.getJSON('./src/model/sampleChar.json', function(data) {
+          console.log(data);
+          activeProfile=data;
+          userData={
+            activeProfile:"Default",
+            profiles:{
+              "Default":activeProfile
             }
-        }
-    });
+          };
+
+          localStorage.setItem('userData', JSON.stringify(userData));
+          initialLoad();
+
+      });;
+
+    }else{
+      Data.loadData();
+      initialLoad();
+
+    }
+    // $.ajax({
+    //     url : iconFolder,
+    //     success: function (data) {
+    //         pageIcons={};
+    //         $(data).find("a").attr("href", function (i, val) {
+    //             console.log(val);
+    //             let path=iconFolder + val
+    //             if( val.match(/\.(jpe?g|png|gif)$/) ) {
+    //                 //$("body").append( "<img src='"+  +"'>" );
+    //                 pageIcons[val]=path;
+    //             }
+    //             console.log(JSON.stringify(pageIcons));
+    //         });
+    //         if (localStorage.getItem("userData") === null) {
+    //
+    //           $.getJSON('./src/model/sampleChar.json', function(data) {
+    //               console.log(data);
+    //               activeProfile=data;
+    //               userData={
+    //                 activeProfile:"Default",
+    //                 profiles:{
+    //                   "Default":activeProfile
+    //                 }
+    //               };
+    //
+    //               localStorage.setItem('userData', JSON.stringify(userData));
+    //               initialLoad();
+    //
+    //           });;
+    //
+    //         }else{
+    //           Data.loadData();
+    //           initialLoad();
+    //
+    //         }
+    //     }
+    // });
 
 
 

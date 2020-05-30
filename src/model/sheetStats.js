@@ -1,7 +1,24 @@
 
 
 
-let pageIcons=null; //becomes an object
+let pageIcons={"alertIcon.png":"images/alertIcon.png",
+"bookGenomeIcon.png":"images/bookGenomeIcon.png",
+"crownIcon.png":"images/crownIcon.png",
+"dieIcon.png":"images/dieIcon.png",
+"dragonIcon.png":"images/dragonIcon.png",
+"eyeIcon.png":"images/eyeIcon.png",
+"gearIcon.png":"images/gearIcon.png",
+"mathIcon.png":"images/mathIcon.png",
+"openBookIcon.png":"images/openBookIcon.png",
+"packIcon.png":"images/packIcon.png",
+"parchmentIcon.png":"images/parchmentIcon.png",
+"physicsIcon.png":"images/physicsIcon.png",
+"printIcon.png":"images/printIcon.png",
+"skillsIcon.png":"images/skillsIcon.png",
+"starIcon.png":"images/starIcon.png",
+"trashIcon.png":"images/trashIcon.png",
+"unicornIcon.png":"images/unicornIcon.png",
+"walkIcon.png":"images/walkIcon.png"}; //becomes an object
 let iconFolder = "images/";
 let defaultIcon="images/dragonIcon.png";
 
