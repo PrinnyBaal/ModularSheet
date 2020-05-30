@@ -1701,7 +1701,7 @@ let pageSelect={
     let icons=activeProfile.pageIcons;
 
     let trayHTML="";
-
+    console.log(pages);
     if (!pageIcons){
       pageIcons={};
       $.ajax({
