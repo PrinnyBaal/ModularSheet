@@ -557,14 +557,14 @@ $.ajax({
     success: function (data) {
         pageIcons={};
         $(data).find("a").attr("href", function (i, val) {
-
+            console.log(val);
             let path=iconFolder + val
             if( val.match(/\.(jpe?g|png|gif)$/) ) {
                 //$("body").append( "<img src='"+  +"'>" );
                 pageIcons[val]=path;
             }
         });
-        
+
     }
 });
 
