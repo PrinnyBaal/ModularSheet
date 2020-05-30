@@ -1703,11 +1703,11 @@ let pageSelect={
     let trayHTML="";
     console.log(pages);
     if (!pageIcons){
-      pageIcons={};
+
       $.ajax({
           url : iconFolder,
           success: function (data) {
-
+              pageIcons={};
               $(data).find("a").attr("href", function (i, val) {
 
                   let path=iconFolder + val
