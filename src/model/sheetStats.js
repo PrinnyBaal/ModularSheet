@@ -252,7 +252,7 @@ const dragTypes={
     hasValue:true,
     hasImage:false,
     selectName:"Receiver",
-    selectDescription:"The 'Receiver' Draggable comes with two sections.  A text section on the top for labelling purposes, and a final value section.  This means that this draggable alwys has a base value of 0 but can be useful if you want to display a stat that is simply a factor of other stats such as displaying your ability score modifier which is only ever a function of your ability score.",
+    selectDescription:"The 'Receiver' Draggable comes with two sections.  A text section on the top for labelling purposes, and a final value section.  This means that this draggable always has a base value of 0 but can be useful if you want to display a stat that is simply a factor of other stats such as displaying your ability score modifier which is only ever a function of your ability score.",
     spawnTemplate:"#receiveOnlyDrag",
 
   },
