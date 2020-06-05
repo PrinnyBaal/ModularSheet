@@ -254,14 +254,14 @@ const dragTypes={
     selectDescription:"The 'Default' Draggable comes with three sections.  A text section on the top for labelling purposes, a base value section that takes in a number and a final value section that displays the value of the draggable after any/all changes have been made to it.",
     spawnTemplate:"#defaultDrag",
   },
-  Default:{
-    hasFinalMod:true,
-    hasValue:true,
-    hasImage:false,
-    selectName:"Default",
-    selectDescription:"The 'Default' Draggable comes with three sections.  A text section on the top for labelling purposes, a base value section that takes in a number and a final value section that displays the value of the draggable after any/all changes have been made to it.",
-    spawnTemplate:"#defaultDrag",
-  },
+  // Default:{
+  //   hasFinalMod:true,
+  //   hasValue:true,
+  //   hasImage:false,
+  //   selectName:"Default",
+  //   selectDescription:"The 'Default' Draggable comes with three sections.  A text section on the top for labelling purposes, a base value section that takes in a number and a final value section that displays the value of the draggable after any/all changes have been made to it.",
+  //   spawnTemplate:"#defaultDrag",
+  // },
 
   ReceiveOnly:{
     hasFinalMod:true,

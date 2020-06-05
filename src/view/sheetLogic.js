@@ -448,7 +448,7 @@ let DragPalette={
     let options=``;
 
    Object.keys(dragTypes).forEach((type)=>{
-     options+=`<option ${type=="Default"? "selected":""} value="${type}">${dragTypes[type].selectName}</option>`;
+     options+=`<option ${type=="HoverDrag"? "selected":""} value="${type}">${dragTypes[type].selectName}</option>`;
    });
 
    $("#typeSelect").html(options);
@@ -780,6 +780,7 @@ let DrawSys={
     //setDrag(child);
     let template;
     let clone;
+
     DrawSys.popBubbles();
     if ($("#overlay").length){
       //turn off
@@ -790,7 +791,8 @@ let DrawSys={
 
     }else{
       //turn on
-
+      $("#drawDisplay").addClass("bubbled");
+      $(".pagePreview").addClass("bubbled");
 
       template = document.querySelector('#overlayTemplate');
 
@@ -806,8 +808,7 @@ let DrawSys={
 
     }
 
-    $("#drawDisplay").toggleClass("bubbled");
-    $(".pagePreview").toggleClass("bubbled");
+
     DrawSys.state.reset();
 
   },
@@ -1270,8 +1271,9 @@ let toggleBar={
     toggleBar.loadBar();
   },
   addBar:function(){
-    activeProfile.activeToggleBar=activeProfile.toggles.length-1;
+
     activeProfile.toggles.push(new ToggleBar({}));
+    activeProfile.activeToggleBar=activeProfile.toggles.length-1;
     toggleBar.loadBar();
     $("#saveButton").addClass("shimmering");
   },
