@@ -122,39 +122,9 @@
   <div id="sheetCol">
     <div id="activeSheet" class="charSheet">
 
-      <!-- <div class="testDraggable" style="width:50px; height:50px;">
-        <div class="row">
-          <input class="col-12" style="border:2px solid black; height:20%;">
-        </div>
 
-        <div class="row">
-          <input class="col-6" style="border:2px solid black; height:80%;">
-          <input class="col-6" style="border:2px solid black; height:20%;">
-        </div>
-      </div> -->
-
-      <!-- <div  class="draggable" id="testingDrag" style="width:15%; height:10%; overflow:hidden; position:absolute;">
-        <div style="display:flex; height:20%; width:100%;"><input type="text" style="height:100%; width:100%;"></div>
-        <div style="display:flex; height:80%; width:100%;"><input type="number" style="height:100%; width:100%;"><input type="number" style="height:100%; width:100%;"></div>
-
-
-      </div> -->
 
       <canvas  id="gridCanvas" style="position:absolute;"></canvas>
-
-      <!-- <div class="container-fluid" id="charChanger">
-        <div class="row" style="height:100%; position:relative;">
-          <input class="col" id="charTitleBanner" onchange="charaSwap.changeTitle(event.target.value)">
-          <select id="charChoiceMenu" onchange="charaSwap.changeChar(event.target.value)">
-          </select>
-
-        </div>
-      </div> -->
-
-
-
-        <!-- <button class ="trayButton" id="reversePageButton" style=""><</button>
-        <button class ="trayButton" id="forwardPageButton" style="">></button> -->
 
 
     </div>
@@ -171,10 +141,7 @@
 
 
 
-      <!-- <div class="row mr-2 ml-2 mt-4" id="spawnPalette">
-        <div class="col-12" id="spawnPaletteTitle">Draggable Palette</div>
-        <hr>
-      </div> -->
+
 
 
 
@@ -190,7 +157,8 @@
          </label>
         </div>
         <hr>
-        <button style="background-color:#750d02; max-height:2em;" class="darkWoodBtn trayButton col-5 offset-3" onclick="resetStorage()">Clear Data</button>
+        <button style="background-color:white; max-height:2em; color:black;" class="darkWoodBtn trayButton col-5 offset-3" onclick="Data.loadBlank()">Clear All</button>
+        <button style="background-color:#750d02; max-height:2em;" class="darkWoodBtn trayButton col-5 offset-3" onclick="resetStorage()">Load Sample</button>
       </div>
 
 
@@ -261,6 +229,14 @@
    <div  class="draggable testDraggable"  style="width:15%; height:10%; overflow:hidden; position:absolute; display:flex; flex-direction:column;">
      <div style="display:flex; min-height:1.5em; width:100%;"><input type="text" class="dragTitleInput" style="height:100%; width:100%;"></div>
      <div style="display:flex; height:100%; width:100%;"><input class="input baseModInput"   type="number" style="height:100%; width:100%;"><input  disabled class ="finalMod" type="number" style="height:100%; width:100%;"></div>
+     <div class="hiddenText"></div>
+   </div>
+ </template>
+
+ <template id="hoverDrag">
+   <div  class="draggable hoverDrag"  style="width:15%; height:10%; overflow:hidden; position:absolute; display:flex; flex-direction:column;">
+     <div style="display:flex; min-height:1.5em; width:100%;"><input type="text" class="dragTitleInput" style="height:100%; width:100%;"></div>
+     <div style="display:flex; height:100%; width:100%;"><input  disabled class ="finalMod" type="number" style=""><input class="input baseModInput"   type="number" style=""></div>
      <div class="hiddenText"></div>
    </div>
  </template>

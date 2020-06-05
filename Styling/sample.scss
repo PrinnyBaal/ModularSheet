@@ -196,6 +196,18 @@ input:checked + .slider:before {
               opacity:0;
               background-image:url($downArrow);
             }
+            .previewPageMoveUp{
+              top:0; left:0;
+              background-color:grey;
+              opacity:0;
+              background-image:url($downArrow);
+              -moz-transform: scaleY(-1);
+              -o-transform: scaleY(-1);
+              -webkit-transform: scaleY(-1);
+              transform: scaleY(-1);
+              filter: FlipV;
+              -ms-filter: "FlipV";
+            }
             .previewPageDelete{
               top:0; right:0;
               background-color:$flairColor;
@@ -256,6 +268,12 @@ input:checked + .slider:before {
           .pagePreview:hover{
             .previewPageMove{
               opacity:.8;
+            }
+            .previewPageMoveUp{
+              opacity:.8;
+            }
+            .previewPageNum{
+              display:none;
             }
             .previewPageDelete{
               opacity:.8;
@@ -492,14 +510,55 @@ input:checked + .slider:before {
 
 }
 
+.finalMod{
+  font-weight:bold;
+}
 
+.hoverDrag{
+  box-shadow:7px 9px 4px rgba(0, 0, 0, 0.5);
+  border:2px solid black;
+  //display:flex;
+  .title{
+    background-color:$lightBack;
+    text-align:center;
 
+  }
 
+  .input{
+    background-color:white;
+    text-align:center;
+    transition: width .5s ease-out;
 
+  }
 
+  .baseModInput{
+    height:100%; width:0;
+    padding:0;
 
+  }
 
+  .finalMod{
 
+    background-color:grey;
+    text-align:center;
+    pointer-events:none;
+    height:100%; width:100%;
+
+    transition: width .5s ease-out;
+  }
+
+  &:hover.locked{
+    .baseModInput{
+      width:100%;
+    }
+
+    .finalMod{
+      width:0;
+      padding:0;
+
+    }
+  }
+}
 
 .testDraggable{
   box-shadow:7px 9px 4px rgba(0, 0, 0, 0.5);

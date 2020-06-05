@@ -21,7 +21,9 @@ let pageIcons={"alertIcon.png":"images/alertIcon.png",
 "walkIcon.png":"images/walkIcon.png"}; //becomes an object
 let iconFolder = "images/";
 let defaultIcon="images/dragonIcon.png";
-
+let userData;
+let activeProfile;
+let savedProfiles;
 
 let ci={
   dieRoll:function(dieSides){
@@ -236,6 +238,22 @@ let fontSelector={
 }
 
 const dragTypes={
+  HoverDrag:{
+    hasFinalMod:true,
+    hasValue:true,
+    hasImage:false,
+    selectName:"Hover Drag",
+    selectDescription:"Much like the basic draggable this container includes a text segment on top for labelling purposes, a whitebacked input section for the 'base' value without any modification and a greybacked section for its value after modification.  <br><br>The key difference is that the base value is hidden unless hovered over to give a far 'cleaner' aesthetic.  Note that the base value will only reveal itself to be edited if the draggable is locked in place (right click draggable to lock/unlock)",
+    spawnTemplate:"#hoverDrag",
+  },
+  Basic:{
+    hasFinalMod:true,
+    hasValue:true,
+    hasImage:false,
+    selectName:"Basic",
+    selectDescription:"The 'Default' Draggable comes with three sections.  A text section on the top for labelling purposes, a base value section that takes in a number and a final value section that displays the value of the draggable after any/all changes have been made to it.",
+    spawnTemplate:"#defaultDrag",
+  },
   Default:{
     hasFinalMod:true,
     hasValue:true,
@@ -244,6 +262,7 @@ const dragTypes={
     selectDescription:"The 'Default' Draggable comes with three sections.  A text section on the top for labelling purposes, a base value section that takes in a number and a final value section that displays the value of the draggable after any/all changes have been made to it.",
     spawnTemplate:"#defaultDrag",
   },
+
   ReceiveOnly:{
     hasFinalMod:true,
     hasValue:true,
@@ -374,6 +393,22 @@ const bonusTypes= {
 
   }
 
+// const blankChar={
+//   "profileName": "Blank",
+//   "activePage": 0,
+//   "activeToggleBar": 0,
+//   "pages":[],
+//   "pageIcons": ["./images/parchmentIcon.png"],
+//   "toggles": [
+//     {
+//       "name": "Unnamed",
+//       "toggles": []
+//     },
+//
+//   ],
+//   "pageBackings": []
+// }
+
 const assets={
   "defaultToggle":"https://res.cloudinary.com/metaverse/image/upload/v1548787121/icons8-transition-both-directions-48.png"
 }
@@ -422,11 +457,21 @@ let Data={
     });
 
 
+  },
+  loadBlank:()=>{
+    if (window.confirm("Do you really want to revert to a blank character sheet?")) {
+      let blank={
+        activeProfile:"Blank",
+        profiles:{
+          "Blank":new Profile(),
+        }
+      }
+      localStorage.setItem('userData', JSON.stringify(blank));
+      location.reload();
+  }
   }
 }
 
-let activeProfile;
-let savedProfiles;
 
 function Draggable(info) {
   this.activeRules= info.activeRules!==undefined? info.activeRules:[];
@@ -494,7 +539,7 @@ function DrawNode(id){
 }
 
 function Profile() {
-  this.profileName="Default";
+  this.profileName="Blank";
   this.activePage=0;
   this.activeToggleBar=0;
   this.pages=[[]]; // an array of arrays. each inner array is a page, each element in those arrays is a draggable
@@ -564,12 +609,12 @@ let ProfileFuncs={
 
 // let sampleProfile= new Profile();
 
-let userData;
+
 
 
 
 function resetStorage(){
-  if (window.confirm("Do you really want to delete all your saved info?")) {
+  if (window.confirm("Do you really want to revert to the sample character sheet?")) {
   localStorage.clear();
   location.reload();
 }

@@ -81,6 +81,7 @@ function initialLoad(){
   $("#pageBackingInput").val(activeProfile.pageBackings[activeProfile.activePage]);
   $("#activeSheet").css("background-image", `url(${activeProfile.pageBackings[activeProfile.activePage]})`);
   SheetGrid.toggleGrid(false);
+  pageSelect.keyboardControl();
 }
 
 let DraggableFuncs={
@@ -451,7 +452,7 @@ let DragPalette={
    });
 
    $("#typeSelect").html(options);
-   DragPalette.dragSelect("Default");
+   DragPalette.dragSelect("HoverDrag");
   },
   dragSelect:(type)=>{
     let dragInfo=dragTypes[type];
@@ -1269,7 +1270,7 @@ let toggleBar={
     toggleBar.loadBar();
   },
   addBar:function(){
-
+    activeProfile.activeToggleBar=activeProfile.toggles.length-1;
     activeProfile.toggles.push(new ToggleBar({}));
     toggleBar.loadBar();
     $("#saveButton").addClass("shimmering");
@@ -1761,25 +1762,6 @@ let pageSelect={
     let icons=activeProfile.pageIcons;
 
     let trayHTML="";
-    console.log(pages);
-    // if (!pageIcons){
-    //
-    //   // $.ajax({
-    //   //     url : iconFolder,
-    //   //     success: function (data) {
-    //   //         pageIcons={};
-    //   //         $(data).find("a").attr("href", function (i, val) {
-    //   //
-    //   //             let path=iconFolder + val
-    //   //             if( val.match(/\.(jpe?g|png|gif)$/) ) {
-    //   //                 //$("body").append( "<img src='"+  +"'>" );
-    //   //                 pageIcons[val]=path;
-    //   //             }
-    //   //         });
-    //   //         pageSelect.loadTray();
-    //   //     }
-    //   // });
-    // }
 
       for (let i=0; i<pages.length; i++){
         trayHTML+=`
@@ -1788,7 +1770,8 @@ let pageSelect={
           <div class="previewPageNum previewPip">${i+1}</div>
           <div class="previewPageDelete previewPip" onclick="pageSelect.deletePage(${i})"></div>
           <div class="previewPageEdit previewPip" onclick="pageSelect.addIconDropdown('#pagePreview${i}', ${i})"></div>
-          <div class="previewPageMove previewPip" onclick="pageSelect.movePage(${i})"></div>
+          <div class="previewPageMove previewPip" onclick="pageSelect.movePage(${i}, 1)"></div>
+          <div class="previewPageMoveUp previewPip" onclick="pageSelect.movePage(${i}, -1)"></div>
         </div>`;
 
       }
@@ -1799,7 +1782,7 @@ let pageSelect={
         $(".pagePreview").addClass("bubbled");
       }
 
-    console.log(pageIcons);
+
 
   },
   addPage:()=>{
@@ -1812,11 +1795,17 @@ let pageSelect={
     pageSelect.loadTray();
     $("#saveButton").addClass("shimmering");
   },
-  movePage:(index)=>{
+  movePage:(index, direction)=>{
     let pages=activeProfile.pages;
     let icons=activeProfile.pageIcons;
     let backings=activeProfile.pageBackings;
-    let newIndex=(index+1)>=pages.length? 0:index+1;
+    let newIndex=(index+direction);
+    event.stopPropagation();
+    if (newIndex>=pages.length){
+      newIndex=0;
+    }else if(newIndex<0){
+      newIndex=pages.length-1;
+    }
 
     ci.array_move(pages, index, newIndex);
     ci.array_move(icons, index, newIndex);
@@ -1912,5 +1901,35 @@ let pageSelect={
       $(event.currentTarget).html(">>>>");
       $("#toggleCol").addClass("collapsed");
     }
+  },
+  keyboardControl:()=>{
+    document.addEventListener ("keydown", function (zEvent) {
+      let currentPage, loopThreshold;
+    if (zEvent.ctrlKey) {  // case sensitive
+        // DO YOUR STUFF HERE
+        currentPage=activeProfile.activePage;
+        loopThreshold=activeProfile.pages.length;
+        if (zEvent.key === "ArrowDown"){
+
+          currentPage++;
+          if (currentPage>=loopThreshold){
+            currentPage=0;
+          }
+          pageSelect.changePage(currentPage);
+        }else if(zEvent.key === "ArrowUp"){
+          currentPage--;
+          if (currentPage<0){
+            currentPage=loopThreshold-1;
+          }
+          pageSelect.changePage(currentPage);
+        }
+
+        else if(zEvent.key=="s"){
+          event.preventDefault();
+          Data.saveData();
+        }
+
+    }
+  } );
   }
 }

@@ -167,6 +167,19 @@ input:checked + .slider:before {
   opacity: 0;
   background-image: url("../images/ui/icon8DownArrow.png");
 }
+#workSpace #toggleCol #selectionSection #pageSelector .pagePreview .previewPageMoveUp {
+  top: 0;
+  left: 0;
+  background-color: grey;
+  opacity: 0;
+  background-image: url("../images/ui/icon8DownArrow.png");
+  -moz-transform: scaleY(-1);
+  -o-transform: scaleY(-1);
+  -webkit-transform: scaleY(-1);
+  transform: scaleY(-1);
+  filter: FlipV;
+  -ms-filter: "FlipV";
+}
 #workSpace #toggleCol #selectionSection #pageSelector .pagePreview .previewPageDelete {
   top: 0;
   right: 0;
@@ -228,6 +241,12 @@ input:checked + .slider:before {
 }
 #workSpace #toggleCol #selectionSection #pageSelector .pagePreview:hover .previewPageMove {
   opacity: 0.8;
+}
+#workSpace #toggleCol #selectionSection #pageSelector .pagePreview:hover .previewPageMoveUp {
+  opacity: 0.8;
+}
+#workSpace #toggleCol #selectionSection #pageSelector .pagePreview:hover .previewPageNum {
+  display: none;
 }
 #workSpace #toggleCol #selectionSection #pageSelector .pagePreview:hover .previewPageDelete {
   opacity: 0.8;
@@ -395,6 +414,44 @@ input:checked + .slider:before {
   height: auto;
   overflow: auto;
   transition: max-height 0.5s ease-in;
+}
+
+.finalMod {
+  font-weight: bold;
+}
+
+.hoverDrag {
+  box-shadow: 7px 9px 4px rgba(0, 0, 0, 0.5);
+  border: 2px solid black;
+}
+.hoverDrag .title {
+  background-color: #eae6e9;
+  text-align: center;
+}
+.hoverDrag .input {
+  background-color: white;
+  text-align: center;
+  transition: width 0.5s ease-out;
+}
+.hoverDrag .baseModInput {
+  height: 100%;
+  width: 0;
+  padding: 0;
+}
+.hoverDrag .finalMod {
+  background-color: grey;
+  text-align: center;
+  pointer-events: none;
+  height: 100%;
+  width: 100%;
+  transition: width 0.5s ease-out;
+}
+.hoverDrag:hover.locked .baseModInput {
+  width: 100%;
+}
+.hoverDrag:hover.locked .finalMod {
+  width: 0;
+  padding: 0;
 }
 
 .testDraggable {
