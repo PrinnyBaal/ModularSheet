@@ -304,6 +304,14 @@ const dragTypes={
     selectDescription:"The 'Title Box' Draggable just has a section for text, though only meant to hold a single line of it.  Use it to help keep notes, keep track of inventory, title sections of your sheet, or even to make a spellbook out of when combined with the description feature each draggable has.",
     spawnTemplate:"#textBoxDrag",
   },
+  TextBox:{
+    hasFinalMod:false,
+    hasValue:false,
+    hasImage:false,
+    selectName:"Text Box",
+    selectDescription:"The 'Text Box' Draggable just has a section for text,  though unlike the titlebox it allows for large amounts of it over multiple lines.  This is useful if you want a block of text to be constantly visible rather than in the description of a draggable, generally for aesthetic purposes.",
+    spawnTemplate:"#textAreaDrag",
+  },
 
 
 }
