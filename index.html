@@ -44,18 +44,29 @@
 
 <div id="alertBanner"></div>
 
-<div id="workBar" style="">
+<div id="workBar">
+  <div style="width:50%;">
+  <button id="downloadButton"  onclick="Data.saveJSON()" style="margin-top:.5em; margin-bottom:.5em; align-self:flex-start;">Download Char JSON</button>
+  <label for="profileUploader" class="buttonLike" style="margin-top:.5em; margin-bottom:.5em; align-self:flex-start;" >Upload Char JSON</label>
+  <input style="display:none" type="file"
+       id="profileUploader"
+       accept="application/JSON">
+  </div>
+
+
+  <div style="display:flex; justify-content:flex-end; width:50%;">
   <button id="saveButton"  onclick="Data.saveData()" style="margin-top:.5em; margin-bottom:.5em;">SAVE</button>
 
-  <div style="padding: .5em; margin-right: 10%;">
-    <b>Visible Grid:</b>
-    <label class="switch">
-      <input type="checkbox" id="gridToggle" onchange="SheetGrid.toggleGrid()">
-      <span class="slider round"></span>
-    </label>
+    <div style="padding: .5em; margin-right: 10%;">
+      <b>Visible Grid:</b>
+      <label class="switch">
+        <input type="checkbox" id="gridToggle" onchange="SheetGrid.toggleGrid()">
+        <span class="slider round"></span>
+      </label>
 
 
-  </div>
+    </div>
+</div>
 </div>
 <div id="workSpace">
   <div id="toggleCol">

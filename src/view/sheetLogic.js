@@ -82,6 +82,8 @@ function initialLoad(){
   $("#activeSheet").css("background-image", `url(${activeProfile.pageBackings[activeProfile.activePage]})`);
   SheetGrid.toggleGrid(false);
   pageSelect.keyboardControl();
+
+  $('#profileUploader').on("change", function(event){ Data.loadFromJSON(event); });
 }
 
 let DraggableFuncs={
