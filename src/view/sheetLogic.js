@@ -82,6 +82,7 @@ function initialLoad(){
   $("#activeSheet").css("background-image", `url(${activeProfile.pageBackings[activeProfile.activePage]})`);
   SheetGrid.toggleGrid(false);
   pageSelect.keyboardControl();
+  DraggableFuncs.keyboardControl();
 
   $('#profileUploader').on("change", function(event){ Data.loadFromJSON(event); });
 }
@@ -156,6 +157,14 @@ let DraggableFuncs={
     baseValue=$(newElem).find(".baseModInput")[0];
     finValue=$(newElem).find(".finalMod")[0];
     hiddenText=$(newElem).find(".hiddenText")[0];
+    //check if this element is the one we are currently hovering over
+    newElem.addEventListener('mouseover', function() {
+        newElem.classList.add('mouseOvered');
+    });
+
+      newElem.addEventListener('mouseout', function() {
+        newElem.classList.remove('mouseOvered');
+      });
 
     if (title){
       $(title).val(ledgerDrag.title);
@@ -408,6 +417,47 @@ let DraggableFuncs={
     SheetDrags.loadPage();
 
   },
+  keyboardControl:()=>{
+    document.addEventListener ("keydown", function (zEvent) {
+
+    if (zEvent.altKey) {  // case sensitive
+        // DO YOUR STUFF HERE
+        event.preventDefault();
+        const element = DraggableFuncs.getMousedOverDrag();
+        console.log("Draggable Keyboard Control");
+        if (zEvent.key === "x" || zEvent.key === "X"){
+
+          event.preventDefault();
+          console.log("we clicked x and prevented default event");
+          if (element){
+            console.log("we found a mousedOverDrag");
+            clipboardDrag=ci.getDragByID(element.dataset.ledgerId);
+            console.log(clipboardDrag);
+            DraggableFuncs.delete(element.dataset.ledgerId);
+          }
+          console.log(element);
+        }else if(zEvent.key === "c" || zEvent.key === "C"){
+          event.preventDefault();
+          if (element){
+            clipboardDrag=ci.getDragByID(element.dataset.ledgerId);
+          }
+        }
+
+        else if(zEvent.key=="v" || zEvent.key === "V"){
+          event.preventDefault();
+          DragPalette.createClone();
+
+        }
+
+    }
+  } );
+},
+getMousedOverDrag:()=>{
+  const element = document.querySelector('.mouseOvered');
+
+  return element;
+},
+
 
 }
 
@@ -468,6 +518,33 @@ let DragPalette={
     let ledgerDrag=new Draggable({id:newID, type:DragPalette.createdDrag.type});
     activeProfile.pages[activeProfile.activePage].push(ledgerDrag);
     DraggableFuncs.spawn(ledgerDrag);
+  },
+  createClone:()=>{
+    if (clipboardDrag!=null){
+      let newID=ProfileFuncs.getNewID();
+      let ledgerDrag=new Draggable({id:newID,
+        type:clipboardDrag.type,
+        drawsFrom:clipboardDrag.drawsFrom,
+        height:clipboardDrag.height,
+        width:clipboardDrag.width,
+        title:clipboardDrag.title,
+        toggleLabel:clipboardDrag.toggleLabel,
+        uiName:clipboardDrag.uiName,
+        value:clipboardDrag.value,
+        imageURL:clipboardDrag.imageURL,
+        description:clipboardDrag.description,
+        isAblScore:clipboardDrag.isAblScore,
+        isClassSkill:clipboardDrag.isClassSkill,
+        type:clipboardDrag.type,
+        fontSize:clipboardDrag.fontSize,
+        fontFamily:clipboardDrag.fontFamily,
+        borderless:clipboardDrag.borderless,
+        unbacked:clipboardDrag.unbacked,
+        hasHiddenText:clipboardDrag.hasHiddenText
+        });
+      activeProfile.pages[activeProfile.activePage].push(ledgerDrag);
+      DraggableFuncs.spawn(ledgerDrag);
+    }
   },
   createDefault:()=>{
 

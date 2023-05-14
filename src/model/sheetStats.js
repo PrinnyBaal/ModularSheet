@@ -24,6 +24,7 @@ let defaultIcon="images/dragonIcon.png";
 let userData;
 let activeProfile;
 let savedProfiles;
+let clipboardDrag;
 
 let ci={
   dieRoll:function(dieSides){

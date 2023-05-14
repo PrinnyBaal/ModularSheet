@@ -99,31 +99,12 @@ input:checked + .slider:before {
   background-color: grey;
   height: 98vh;
 }
-#workSpace #toggleCol {
-  background-color: #3b413a;
-  flex-grow: 1;
-  width: 25%;
-  position: relative;
-  transition: width 0.5s ease-in;
-}
-#workSpace #toggleCol .collapseButton {
-  right: 0;
-  z-index: 5;
-}
-#workSpace #toggleCol #selectionSection #creationForm {
-  width: 72%;
-  padding-top: 0.5em;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  background-color: #1a1618;
-  overflow: hidden;
-}
-#workSpace #toggleCol #selectionSection #pageSegment {
+#workSpace #pageSegment {
   overflow-y: auto;
   background-color: #3b413a;
-  width: 28%;
+  width: 9%;
 }
-#workSpace #toggleCol #selectionSection #pageSelector {
+#workSpace #pageSegment #pageSelector {
   display: flex;
   flex-direction: column;
   overflow: auto;
@@ -131,7 +112,7 @@ input:checked + .slider:before {
   height: 100%;
   width: 100%;
 }
-#workSpace #toggleCol #selectionSection #pageSelector .pagePreview {
+#workSpace #pageSegment #pageSelector .pagePreview {
   width: 5em;
   height: 5em;
   border: 2px solid white;
@@ -143,12 +124,12 @@ input:checked + .slider:before {
   background-color: white;
   border-radius: 5%;
 }
-#workSpace #toggleCol #selectionSection #pageSelector .pagePreview.selectedPreview {
+#workSpace #pageSegment #pageSelector .pagePreview.selectedPreview {
   border-style: groove;
   border-width: thick;
   border-color: gold;
 }
-#workSpace #toggleCol #selectionSection #pageSelector .pagePreview .previewPip {
+#workSpace #pageSegment #pageSelector .pagePreview .previewPip {
   position: absolute;
   width: 21%;
   height: 21%;
@@ -156,18 +137,18 @@ input:checked + .slider:before {
   background-size: cover;
   transition: width 0.25s ease-out;
 }
-#workSpace #toggleCol #selectionSection #pageSelector .pagePreview .previewPip:hover {
+#workSpace #pageSegment #pageSelector .pagePreview .previewPip:hover {
   width: 33%;
   height: 33%;
 }
-#workSpace #toggleCol #selectionSection #pageSelector .pagePreview .previewPageMove {
+#workSpace #pageSegment #pageSelector .pagePreview .previewPageMove {
   bottom: 0;
   left: 0;
   background-color: grey;
   opacity: 0;
   background-image: url("../images/ui/icon8DownArrow.png");
 }
-#workSpace #toggleCol #selectionSection #pageSelector .pagePreview .previewPageMoveUp {
+#workSpace #pageSegment #pageSelector .pagePreview .previewPageMoveUp {
   top: 0;
   left: 0;
   background-color: grey;
@@ -180,14 +161,14 @@ input:checked + .slider:before {
   filter: FlipV;
   -ms-filter: "FlipV";
 }
-#workSpace #toggleCol #selectionSection #pageSelector .pagePreview .previewPageDelete {
+#workSpace #pageSegment #pageSelector .pagePreview .previewPageDelete {
   top: 0;
   right: 0;
   background-color: #cf4540;
   opacity: 0;
   background-image: url("../images/trashIcon.png");
 }
-#workSpace #toggleCol #selectionSection #pageSelector .pagePreview .previewPageEdit {
+#workSpace #pageSegment #pageSelector .pagePreview .previewPageEdit {
   bottom: 0;
   right: 0;
   background-color: grey;
@@ -195,7 +176,7 @@ input:checked + .slider:before {
   background-size: cover;
   background-image: url("../images/ui/icon8PullDown.png");
 }
-#workSpace #toggleCol #selectionSection #pageSelector .pagePreview .previewPageNum {
+#workSpace #pageSegment #pageSelector .pagePreview .previewPageNum {
   top: 0;
   left: 0;
   background-color: darkgreen;
@@ -205,7 +186,7 @@ input:checked + .slider:before {
   width: 33%;
   height: 33%;
 }
-#workSpace #toggleCol #selectionSection #pageSelector .pagePreview .iconSelectContainer {
+#workSpace #pageSegment #pageSelector .pagePreview .iconSelectContainer {
   position: absolute;
   z-index: 1;
   top: 100%;
@@ -217,7 +198,7 @@ input:checked + .slider:before {
   flex-direction: row-reverse;
   align-content: flex-start;
 }
-#workSpace #toggleCol #selectionSection #pageSelector .pagePreview .iconSelectContainer .selectableIcon {
+#workSpace #pageSegment #pageSelector .pagePreview .iconSelectContainer .selectableIcon {
   width: 2rem;
   height: 2rem;
   border: 2px solid black;
@@ -226,7 +207,7 @@ input:checked + .slider:before {
   flex-shrink: 0;
   cursor: pointer;
 }
-#workSpace #toggleCol #selectionSection #pageSelector .pagePreview .iconSelectContainer .closeIcon {
+#workSpace #pageSegment #pageSelector .pagePreview .iconSelectContainer .closeIcon {
   width: 2rem;
   height: 2rem;
   border: 2px solid black;
@@ -236,27 +217,46 @@ input:checked + .slider:before {
   flex-shrink: 0;
   cursor: pointer;
 }
-#workSpace #toggleCol #selectionSection #pageSelector .pagePreview .iconSelectContainer .closeIcon:hover {
+#workSpace #pageSegment #pageSelector .pagePreview .iconSelectContainer .closeIcon:hover {
   background-color: black;
 }
-#workSpace #toggleCol #selectionSection #pageSelector .pagePreview:hover .previewPageMove {
+#workSpace #pageSegment #pageSelector .pagePreview:hover .previewPageMove {
   opacity: 0.8;
 }
-#workSpace #toggleCol #selectionSection #pageSelector .pagePreview:hover .previewPageMoveUp {
+#workSpace #pageSegment #pageSelector .pagePreview:hover .previewPageMoveUp {
   opacity: 0.8;
 }
-#workSpace #toggleCol #selectionSection #pageSelector .pagePreview:hover .previewPageNum {
+#workSpace #pageSegment #pageSelector .pagePreview:hover .previewPageNum {
   display: none;
 }
-#workSpace #toggleCol #selectionSection #pageSelector .pagePreview:hover .previewPageDelete {
+#workSpace #pageSegment #pageSelector .pagePreview:hover .previewPageDelete {
   opacity: 0.8;
 }
-#workSpace #toggleCol #selectionSection #pageSelector .pagePreview:hover .previewPageEdit {
+#workSpace #pageSegment #pageSelector .pagePreview:hover .previewPageEdit {
   opacity: 0.8;
 }
-#workSpace #toggleCol #selectionSection #pageSelector .pagePreview:hover .previewPip:hover {
+#workSpace #pageSegment #pageSelector .pagePreview:hover .previewPip:hover {
   opacity: 1;
   cursor: pointer;
+}
+#workSpace #toggleCol {
+  background-color: #3b413a;
+  flex-grow: 1;
+  width: 20%;
+  position: relative;
+  transition: width 0.5s ease-in;
+}
+#workSpace #toggleCol .collapseButton {
+  right: 0;
+  z-index: 5;
+}
+#workSpace #toggleCol #selectionSection #creationForm {
+  width: 100%;
+  padding-top: 0.5em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  background-color: #1a1618;
+  overflow: hidden;
 }
 #workSpace #toggleCol #drawDisplay {
   background-color: #eae6e9;
